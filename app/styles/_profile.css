@@ -1,0 +1,56 @@
+.profile {
+    box-sizing: border-box;
+    padding: 30px 30px 0;
+    text-align: center;
+}
+
+.profile-title {
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    font-weight: normal;
+    font-size: 2.4rem;
+}
+
+.profile-name {
+    display: block;
+}
+
+.profile-photo {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.profile-location {
+    font-weight: 200;
+    font-size: 1.6rem;
+    margin: 0;
+    opacity: 0.6;
+}
+
+.profile-subtitle {
+    opacity: 0.8;
+    font-weight: normal;
+    font-size: 1.6rem;
+}
+
+.profile-skills {
+    opacity: 0.5;
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+
+.profile-links {
+    margin: 1.6rem 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+    .profile-links li {
+        display: inline;
+        margin: 0 5px;
+    }
+
+    .profile-links a {
+        text-decoration: none;
+    }

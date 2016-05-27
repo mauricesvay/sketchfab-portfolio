@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ profile.displayName }} 3D Portfolio
+{% endblock %}
+
+{% block content %}
+    {% include 'header.html' %}
+
+    <div class="col-md-9">
+        <ul class="skfb-grid">
+        {% for model in models %}
+            <li class="skfb-grid-cell model">
+                <a href="{{ model.viewerUrl }}" data-type="iframe" data-href="{{ model.embedUrl }}" data-gall="models" title="{{ model.name | e }}" class="ratio-16-9" style="background-image: url({{ model.thumbnails.images | imageUrlSize(640) }})">
+                    <div class="ratio-inner">
+                        <img src="{{ model.thumbnails.images | imageUrlSize(640) }}" alt="{{ model.name | e }}">
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    {% include 'footer.html' %}
+{% endblock %}

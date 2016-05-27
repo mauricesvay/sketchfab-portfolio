@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Portfolio setup</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+
+		<h1>Portfolio setup</h1>
+
+		{% if isInstalled %}
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Configuration</h3>
+				</div>
+				<div class="panel-body">
+					Portfolio is installed <a href="index.php">Go to portfolio</a>
+				</div>
+			</div>
+		{% else %}
+
+			{% if error %}
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title">Configuration</h3>
+					</div>
+					<div class="panel-body">
+						{{ error }}
+					</div>
+				</div>
+			{% endif %}
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form action="" method="post">
+						<div class="form-group">
+							<label for="username">Enter your Sketchfab username</label>
+							<div class="input-group">
+								<div class="input-group-addon">https://sketchfab.com/</div>
+								<input type="text" class="form-control" id="username" placeholder="Username" name="username" autofocus>
+							</div>
+						</div>
+				        <button type="submit" class="btn btn-primary">Install</button>
+				    </form>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</body>
+</html>

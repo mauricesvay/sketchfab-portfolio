@@ -1,0 +1,55 @@
+<header class="profile col-md-3">
+
+    <h1 class="profile-title">
+        <img src="{{ profile.avatars.images | imageUrlSize(64) }}" class="profile-photo">
+        <span class="profile-name">{{ profile.displayName }}</span>
+    </h1>
+
+    <h3 class="profile-location">
+        {% if profile.city %}
+            {{ profile.city }},
+        {% endif %}
+        {% if profile.country %}
+            {{ profile.country }}
+        {% endif %}
+    </h3>
+
+    <h2 class="profile-subtitle">{{ profile.tagline }}</h2>
+
+    <div class="profile-skills">
+        {% for skill in profile.skills %}
+            <span class="profile-skill">{{ skill.name }}</span>{% if not loop.last %},{% endif %}
+        {% endfor %}
+    </div>
+
+    <ul class="profile-links">
+        <li>
+            <a href="{{ profile.profileUrl | e }}" title="Sketchfab"><i class="icon-sketchfab"></i></a>
+        </li>
+
+        {% if profile.twitterUsername %}
+        <li>
+            <a href="https://twitter.com/{{ profile.twitterUsername | e }}" title="Twitter"><i class="icon-twitter"></i></a>
+        </li>
+        {% endif %}
+
+        {% if profile.facebookUsername %}
+        <li>
+            <a href="https://www.facebook.com/{{ profile.facebookUsername | e }}" title="Facebook"><i class="icon-facebook"></i></a>
+        </li>
+        {% endif %}
+
+        {% if profile.linkedinUsername %}
+        <li>
+            <a href="https://www.linkedin.com/in/{{ profile.linkedinUsername | e }}" title="Linkedin"><i class="icon-linkedin"></i></a>
+        </li>
+        {% endif %}
+
+        {% if profile.website %}
+        <li>
+            <a href="{{ profile.website | e }}" title="Website"><i class="icon-web"></i></a>
+        </li>
+        {% endif %}
+    </ul>
+
+</header>
