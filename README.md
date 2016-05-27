@@ -2,6 +2,8 @@
 
 Sketchfab Portfolio generates a portfolio from your Sketchfab account.
 
+![Screenshot of Portfolio](./docs/screenshot.jpg?raw=true)
+
 ## Requirements
 
 * Web hosting with PHP 5.5 or later
@@ -15,11 +17,11 @@ Sketchfab Portfolio generates a portfolio from your Sketchfab account.
 
 ## Customizing your portfolio
 
-### Customizing models displayed
+### Customizing content
 
 By default, the portfolio will display all the models on your account.
 
-If you want to display only a selection of models:
+If you want to display a selection of models only:
 * tag them with the **portfolio** tag on Sketchfab
 * on your portfolio, scroll to the very bottom and click on "Update portfolio". If models do not update, wait a few minutes and try again.
 
