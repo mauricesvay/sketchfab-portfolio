@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-require "app/lib/api.php";
-require "app/lib/config.php";
+require __DIR__ . "/app/lib/api.php";
+require __DIR__ . "/app/lib/config.php";
 
 $loader = new Twig_Loader_Filesystem('app/templates');
 $twig = new Twig_Environment($loader);

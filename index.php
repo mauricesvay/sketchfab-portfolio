@@ -1,5 +1,5 @@
 <?php
-require 'app/boot.php';
+require __DIR__ . '/app/boot.php';
 
 $loader = new Twig_Loader_Filesystem('app/templates');
 $twig = new Twig_Environment($loader);
