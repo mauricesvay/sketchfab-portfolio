@@ -22,9 +22,8 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
     if ($resource === 'models' && $action === 'reload') {
-        header('Content-type: application/json');
-        $profileResult = importProfile($username, $profilePath);
-        $modelsResult = importModels($profile['uid'], $modelsPath);
+        $profileResult = importProfile($username, $PROFILE_PATH);
+        $modelsResult = importModels($profile['uid'], $MODELS_PATH);
         $result = array(
             'result' => $profileResult && $modelsResult
         );
