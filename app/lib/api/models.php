@@ -4,7 +4,7 @@
  * Fetch paginated models for given user id
  */
 function fetchModels($userId, $offset=0) {
-    $baseUrl = 'https://sketchfab.com/v2/models';
+    $baseUrl = 'https://api.sketchfab.com/v2/models';
     $params = array(
         'user' => $userId,
         'offset' => $offset
