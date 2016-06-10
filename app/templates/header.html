@@ -24,30 +24,30 @@
 
     <ul class="profile-links">
         <li>
-            <a href="{{ profile.profileUrl | e }}" title="Sketchfab"><i class="icon-sketchfab"></i></a>
+            <a target="_blank" href="{{ profile.profileUrl | e }}" title="Sketchfab"><i class="icon-sketchfab"></i></a>
         </li>
 
         {% if profile.twitterUsername %}
         <li>
-            <a href="https://twitter.com/{{ profile.twitterUsername | e }}" title="Twitter"><i class="icon-twitter"></i></a>
+            <a target="_blank" href="https://twitter.com/{{ profile.twitterUsername | e }}" title="Twitter"><i class="icon-twitter"></i></a>
         </li>
         {% endif %}
 
         {% if profile.facebookUsername %}
         <li>
-            <a href="https://www.facebook.com/{{ profile.facebookUsername | e }}" title="Facebook"><i class="icon-facebook"></i></a>
+            <a target="_blank" href="https://www.facebook.com/{{ profile.facebookUsername | e }}" title="Facebook"><i class="icon-facebook"></i></a>
         </li>
         {% endif %}
 
         {% if profile.linkedinUsername %}
         <li>
-            <a href="https://www.linkedin.com/in/{{ profile.linkedinUsername | e }}" title="Linkedin"><i class="icon-linkedin"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/{{ profile.linkedinUsername | e }}" title="Linkedin"><i class="icon-linkedin"></i></a>
         </li>
         {% endif %}
 
         {% if profile.website %}
         <li>
-            <a href="{{ profile.website | e }}" title="Website"><i class="icon-web"></i></a>
+            <a target="_blank" href="{{ profile.website | e }}" title="Website"><i class="icon-web"></i></a>
         </li>
         {% endif %}
     </ul>
