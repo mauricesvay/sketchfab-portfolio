@@ -4,8 +4,13 @@
     display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
-    margin: 1rem;
+    margin: 1rem 0;
     padding: 0;
+}
+
+.skfb-grid-sort {
+    text-align: center;
+    padding: 1.5rem 5px 0;
 }
 
 .skfb-grid-cell {
