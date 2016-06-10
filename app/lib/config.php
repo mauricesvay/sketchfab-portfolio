@@ -1,25 +1,31 @@
 <?php
 
+/**
+ * Check if app is configured
+ */
 function hasConfig() {
     $configPath = getConfigPath();
     return ($configPath !== "");
 }
 
+/**
+ * Get path of config file
+ */
 function getConfigPath() {
-    $files = glob(__DIR__ . "/../../data/config-*.json");
+    $files = glob(dirname(__FILE__) . "/../../data/config-*.json");
     $configPath = "";
 
-    foreach($files as $file) {
-        $configPath = $file;
-        break;
+    if ($files) {
+        foreach($files as $file) {
+            $configPath = $file;
+            break;
+        }
     }
 
     return $configPath;
 }
 
-function checkPassword($password) {
+function getConfig() {
     $configPath = getConfigPath();
-    $config = json_decode(file_get_contents($configPath), true);
-    $hash = $config['password'];
-    return password_verify ($password, $hash);
+    return json_decode(file_get_contents($configPath), true);
 }

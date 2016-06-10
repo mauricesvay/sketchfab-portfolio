@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/app/boot.php';
+require dirname(__FILE__) . '/app/boot.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $resource = $_GET['resource'];

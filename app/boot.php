@@ -1,13 +1,14 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/lib/PortfolioTwigExtension.php';
-require __DIR__ . '/lib/api.php';
-require __DIR__ . '/lib/config.php';
+require_once dirname(__FILE__) . '/../vendor/twig/twig/lib/Twig/Autoloader.php';
+Twig_Autoloader::register();
+
+require dirname(__FILE__) . '/lib/api.php';
+require dirname(__FILE__) . '/lib/config.php';
+require dirname(__FILE__) . '/lib/PortfolioTwigExtension.php';
 
 //Config
 if (hasConfig()) {
-    $configPath = getConfigPath();
-    $config = json_decode(file_get_contents($configPath), true);
+    $config = getConfig();
     $username = $config['username'];
     if ( !array_key_exists('username', $config) || !isValidUsername($config['username']) ) {
         die("Configuration is invalid");
@@ -18,30 +19,33 @@ if (hasConfig()) {
 }
 
 // Content
-$profilePath = __DIR__ . "/../data/cache/{$username}_profile.json";
-$modelsPath = __DIR__ . "/../data/cache/{$username}_models.json";
+$PROFILE_PATH = dirname(__FILE__) . "/../data/cache/{$username}_profile.json";
+$MODELS_PATH = dirname(__FILE__) . "/../data/cache/{$username}_models.json";
 
-if (!is_file($profilePath)) {
-    importProfile($username, $profilePath);
+if (!is_file($PROFILE_PATH)) {
+    importProfile($username, $PROFILE_PATH);
 }
-$profile = json_decode(file_get_contents($profilePath), true);
+$profile = json_decode(file_get_contents($PROFILE_PATH), true);
 
-if (!is_file($modelsPath)) {
-    importModels($profile['uid'], $modelsPath);
+if (!is_file($MODELS_PATH)) {
+    importModels($profile['uid'], $MODELS_PATH);
 }
-
-$models = json_decode(file_get_contents($modelsPath), true);
+$models = json_decode(file_get_contents($MODELS_PATH), true);
 
 // Should show portfolio models only?
-$showTaggedOnly = false;
-foreach($models as $model) {
-    if (in_array('portfolio', $model['tags'])) {
-        $showTaggedOnly = true;
-        break;
-    }
+function filterModels($model){
+    return in_array('portfolio', $model['tags']);
 }
-if ($showTaggedOnly) {
-    $models = array_filter($models, function($model){
-        return in_array('portfolio', $model['tags']);
-    });
+
+$showTaggedOnly = false;
+if (count($models)) {
+    foreach($models as $model) {
+        if (in_array('portfolio', $model['tags'])) {
+            $showTaggedOnly = true;
+            break;
+        }
+    }
+    if ($showTaggedOnly) {
+        $models = array_filter($models, 'filterModels');
+    }
 }

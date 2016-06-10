@@ -1,6 +1,6 @@
 {
     "require": {
-        "guzzlehttp/guzzle": "~6.0",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "rmccue/requests": "^1.6"
     }
 }

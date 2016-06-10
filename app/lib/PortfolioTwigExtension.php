@@ -1,10 +1,12 @@
 <?php
+require_once dirname(__FILE__) . '/../../vendor/twig/twig/lib/Twig/Autoloader.php';
+Twig_Autoloader::register();
 
 function compareImageSize($a, $b) {
     return $a['width'] > $b['width'];
 }
 
-$imageUrlFilter = new Twig_SimpleFilter('imageUrlSize', function ($images, $minSize) {
+function imageUrlSizeFilter($images, $minSize) {
     usort($images, 'compareImageSize');
 
     foreach($images as $image) {
@@ -12,4 +14,6 @@ $imageUrlFilter = new Twig_SimpleFilter('imageUrlSize', function ($images, $minS
             return $image['url'];
         }
     }
-});
+}
+
+$imageUrlFilter = new Twig_SimpleFilter('imageUrlSize', 'imageUrlSizeFilter');
