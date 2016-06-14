@@ -7,7 +7,7 @@ This application is not officially supported by Sketchfab.
 
 ## Requirements
 
-* Web hosting with PHP 5.5 or later
+* Web hosting with PHP 5.3 or later
 
 ## Setup
 
