@@ -1,6 +1,7 @@
-# Sketchfab Portfolio
+# Sketchfab Portfolio v1.0.0
 
 Sketchfab Portfolio generates a portfolio from your Sketchfab account.
+This application is not officially supported by Sketchfab.
 
 ![Screenshot of Portfolio](./docs/screenshot.jpg?raw=true)
 
