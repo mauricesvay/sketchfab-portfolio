@@ -28,7 +28,7 @@ if (!is_file($PROFILE_PATH)) {
 $profile = json_decode(file_get_contents($PROFILE_PATH), true);
 
 if (!is_file($MODELS_PATH)) {
-    importModels($profile['uid'], $MODELS_PATH);
+    importModels($profile['username'], $MODELS_PATH);
 }
 $models = json_decode(file_get_contents($MODELS_PATH), true);
 

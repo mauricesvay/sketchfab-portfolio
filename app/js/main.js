@@ -26,11 +26,19 @@ $(document).ready(function(){
         }
     }
 
-    $('button[data-action]').on('click', function(){
+    $('button[data-action="forceUpdate"]').on('click', function(){
         var $this = $(this);
         var attribute = $this.attr('data-action').replace('sort', 'data');
         $('button[data-action]').removeClass('active');
         $this.addClass('active');
         tinysort('ul.skfb-grid>li', { sortFunction: getSortFunction(attribute)});
+    });
+
+    // Check for update
+    $.get('https://api.github.com/repos/mauricesvay/sketchfab-portfolio/releases/latest').then(function(response){
+        var currentVersion = $('#current-version').text();
+        if (response.name !== currentVersion) {
+            $('#current-version').html('<b>New version available: ' + response.name + '</b>');
+        }
     });
 });

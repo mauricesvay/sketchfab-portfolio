@@ -3,11 +3,12 @@
 /**
  * Fetch paginated models for given user id
  */
-function fetchModels($userId, $offset=0) {
-    $baseUrl = 'https://api.sketchfab.com/v2/models';
+function fetchModels($username, $cursor='') {
+    $baseUrl = 'https://api.sketchfab.com/v3/models';
     $params = array(
-        'user' => $userId,
-        'offset' => $offset
+        'user' => $username,
+        'sort_by' => '-createdAt',
+        'cursor' => $cursor
     );
     $url = $baseUrl . '?' . http_build_query($params);
     return fetchJson($url);
@@ -16,14 +17,26 @@ function fetchModels($userId, $offset=0) {
 /**
  * Fetch all models for given user id
  */
-function fetchAllModels($userId) {
-    $offset = 0;
+function fetchAllModels($username) {
+    $cursor = '';
     $models = array();
 
     do {
-        $response = fetchModels($userId, $offset);
+        $response = fetchModels($username, $cursor);
+        $params = array();
+
+        // Extract cursor
+        if ($response['next'] !== null) {
+            $parsed = parse_url($response['next'], PHP_URL_QUERY);
+            if($parsed !== null) {
+                parse_str($parsed, $params);
+                if (array_key_exists ('cursor', $params)) {
+                    $cursor = $params['cursor'];
+                }
+            }
+        }
+
         $models = array_merge($models, $response['results']);
-        $offset = $offset + $response['count'];
     } while ($response['next']);
 
     return $models;
@@ -32,8 +45,8 @@ function fetchAllModels($userId) {
 /**
  * Save all user models to file
  */
-function importModels($uid, $filePath) {
-    $models = fetchAllModels($uid);
+function importModels($username, $filePath) {
+    $models = fetchAllModels($username);
     makeDirForPath($filePath);
     return file_put_contents($filePath, json_encode($models));
 }
