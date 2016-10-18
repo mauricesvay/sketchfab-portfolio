@@ -26,7 +26,7 @@ $(document).ready(function(){
         }
     }
 
-    $('button[data-action="forceUpdate"]').on('click', function(){
+    $('.skfb-grid-sort button[data-action]').on('click', function(){
         var $this = $(this);
         var attribute = $this.attr('data-action').replace('sort', 'data');
         $('button[data-action]').removeClass('active');
