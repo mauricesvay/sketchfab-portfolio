@@ -23,7 +23,7 @@ if ($method === 'GET') {
 if ($method === 'POST') {
     if ($resource === 'models' && $action === 'reload') {
         $profileResult = importProfile($username, $PROFILE_PATH);
-        $modelsResult = importModels($profile['uid'], $MODELS_PATH);
+        $modelsResult = importModels($username, $MODELS_PATH);
         $result = array(
             'result' => $profileResult && $modelsResult
         );
