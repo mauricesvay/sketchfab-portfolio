@@ -7,6 +7,11 @@ function compareImageSize($a, $b) {
 }
 
 function imageUrlSizeFilter($images, $minSize) {
+
+    if (!is_array($images)) {
+        return '';
+    }
+
     usort($images, 'compareImageSize');
 
     foreach($images as $image) {
