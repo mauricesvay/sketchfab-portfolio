@@ -51,7 +51,7 @@ function fetchProfile($id) {
         return false;
     }
 
-    $urlTemplate = 'https://api.sketchfab.com/v2/users/%s';
+    $urlTemplate = 'https://api.sketchfab.com/v3/users/%s';
     $url = sprintf($urlTemplate, $id);
     return fetchJson($url);
 

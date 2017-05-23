@@ -18,6 +18,8 @@ function fetchModels($username, $cursor='') {
  * Fetch all models for given user id
  */
 function fetchAllModels($username) {
+
+    set_time_limit (0);
     $cursor = '';
     $models = array();
 
@@ -36,7 +38,14 @@ function fetchAllModels($username) {
             }
         }
 
-        $models = array_merge($models, $response['results']);
+        if (is_array($response) && array_key_exists('results', $response)) {
+            $models = array_merge($models, $response['results']);
+        } else {
+            break;
+        }
+
+        sleep(5);
+
     } while ($response['next']);
 
     return $models;
