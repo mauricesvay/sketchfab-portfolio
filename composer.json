@@ -1,6 +1,6 @@
 {
     "require": {
         "twig/twig": "~1.0",
-        "rmccue/requests": "^1.6"
+        "rmccue/requests": "^1.7"
     }
 }
